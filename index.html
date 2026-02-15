@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Assistência técnica remota via WhatsApp. Envie um vídeo do seu problema e receba um diagnóstico e orçamento sem sair de casa.">
+    <title>Diagnóstico Remoto | Assistência Técnica</title>
+    
+    <!-- Meta Tags para WhatsApp (Open Graph) -->
+    <meta property="og:title" content="TecRemoto | Diagnóstico Técnico via WhatsApp">
+    <meta property="og:description" content="Não seja enganado. Envie um vídeo do seu aparelho (Máquina de Lavar, Geladeira ou PC) e receba um laudo técnico imparcial.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1597424214756-501d80c4372e?q=80&w=1200&auto=format&fit=crop">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+
+    <style>
+        :root {
+            --bg-color: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --primary: #00ff88; /* Verde Neon */
+            --secondary: #ffffff;
+            --text-gray: #b0b0b0;
+            --accent: #7000ff; /* Roxo para contraste */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--secondary);
+            line-height: 1.6;
+        }
+
+        /* Utilitários */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h1, h2, h3 {
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a2e25 0%, #0f0f0f 70%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* Botão Pulsante */
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--primary);
+            color: #000;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.4);
+            text-transform: uppercase;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+        }
+
+        /* Como Funciona (Cards) */
+        .steps {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .card-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.05);
+            position: absolute;
+            top: -10px;
+            right: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* O que você recebe */
+        .deliverables {
+            background-color: var(--card-bg);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .check-list {
+            list-style: none;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .check-list li {
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .check-icon {
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Preço */
+        .pricing {
+            padding: 80px 0;
+            text-align: center;
+            background: linear-gradient(180deg, var(--bg-color) 0%, #1a2e25 100%);
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.1);
+        }
+
+        .price-value {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .price-obs {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        /* FAQ e Sobre */
+        .info-section {
+            padding: 80px 0;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .faq-question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #333;
+            color: var(--text-gray);
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .btn-cta { width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">TEC<span class="highlight">REMOTO</span></div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Diagnóstico Técnico <br><span class="highlight">Sem Sair de Casa</span></h1>
+            <p>O técnico cobrou caro? Não feche negócio antes de falar comigo. Descubra o defeito real e o preço justo das peças para <strong>não ser enganado</strong>.</p>
+            <a href="https://wa.me/5513998015286" class="btn-cta">Iniciar Diagnóstico no WhatsApp</a>
+        </div>
+    </section>
+
+    <section class="steps">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="grid">
+                <div class="card">
+                    <span class="card-number">01</span>
+                    <h3>Envie o Vídeo</h3>
+                    <p>Grave um vídeo curto, tire fotos ou mande um áudio explicando o problema do seu equipamento.</p>
+                </div>
+                <div class="card">
+                    <span class="card-number">02</span>
+                    <h3>Análise Técnica</h3>
+                    <p>Eu analiso o defeito com base na minha experiência e identifico a provável causa raiz.</p>
+                </div>
+                <div class="card">
+                    <span class="card-number">03</span>
+                    <h3>O Veredito</h3>
+                    <p>Você recebe: Causa provável, se compensa consertar e a estimativa de custo de mercado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="deliverables">
+        <div class="container">
+            <h2 class="section-title">O que você recebe no WhatsApp</h2>
+            <ul class="check-list">
+                <li><span class="check-icon">✓</span> Diagnóstico da Provável Causa</li>
+                <li><span class="check-icon">✓</span> Análise de Viabilidade (Compensa?)</li>
+                <li><span class="check-icon">✓</span> Estimativa de Custo de Peças e Mão de Obra</li>
+            </ul>
+            <br><br>
+            <a href="https://wa.me/5513998015286" class="btn-cta" style="background-color: transparent; border: 2px solid var(--primary); color: var(--primary);">Falar com Técnico</a>
+        </div>
+    </section>
+
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Quanto custa o laudo?</h2>
+            <div class="price-card">
+                <h3>Diagnóstico Completo</h3>
+                <div class="price-value">R$ 29,90</div>
+                <p>Valor único por aparelho.</p>
+                <p class="price-obs">Pagamento via PIX somente após o envio do vídeo.</p>
+                <ul class="check-list" style="margin-bottom: 30px; font-size: 1rem;">
+                    <li><span class="check-icon">✓</span> Análise técnica detalhada</li>
+                    <li><span class="check-icon">✓</span> Orçamento de peças (se houver)</li>
+                    <li><span class="check-icon">✓</span> Suporte para dúvidas</li>
+                </ul>
+                <a href="https://wa.me/5513998015286" class="btn-cta">Quero meu Diagnóstico</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="container">
+            <h2 class="section-title">Perguntas Frequentes</h2>
+            
+            <div class="faq-item">
+                <span class="faq-question">Como funciona o pagamento?</span>
+                <p>É super simples. Você me manda o vídeo, eu confirmo que consigo analisar e te passo minha chave PIX. Assim que confirmado, te envio o laudo completo.</p>
+            </div>
+
+            <div class="faq-item">
+                <span class="faq-question">E se você não descobrir o problema?</span>
+                <p>Se eu analisar o vídeo e não conseguir identificar a causa provável, <strong>você não paga nada</strong>. Honestidade em primeiro lugar.</p>
+            </div>
+
+            <div class="faq-item">
+                <span class="faq-question">Quais aparelhos você analisa?</span>
+                <p>Principalmente <strong>Máquinas de Lavar e Geladeiras</strong> (Brastemp, Consul, Electrolux). Também analiso Computadores e Celulares.</p>
+            </div>
+
+            <div style="margin-top: 60px; text-align: center;">
+                <h2 class="section-title">Quem sou eu?</h2>
+                <p style="max-width: 700px; margin: 0 auto; font-size: 1.1rem; color: var(--text-gray);">Sou desenvolvedor de software com experiência em desenvolvimento de sistemas na Suíça e EUA, atuando em grandes companhias. Criei o <strong>TecRemoto</strong> para oferecer uma <strong>segunda opinião imparcial</strong>. Como não lucro com a venda de peças ou mão de obra de reparo, meu diagnóstico é 100% focado em te dizer a verdade, evitando gastos desnecessários ou orçamentos superfaturados.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 TecRemoto. Soluções rápidas via WhatsApp.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
